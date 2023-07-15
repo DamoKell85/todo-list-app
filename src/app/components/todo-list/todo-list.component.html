@@ -1,26 +1,17 @@
-<div class="container">
-  <h1>Todo List</h1>
-
-  <div class="input-group">
-    <input
-      type="text"
-      [(ngModel)]="newTaskTitle"
-      placeholder="Enter a new task"
-    />
-    <button (click)="addTask()" [disabled]="!newTaskTitle.trim()">
-      Add Task
-    </button>
+<div class="container mx-auto">
+    <h1 class="text-2xl font-bold my-4">Todo List</h1>
+  
+    <form name="new" class="flex mb-4">
+      <input name="name" type="text" class="flex-grow p-2 border border-gray-300" placeholder="Add a new task..." [(ngModel)]="newTaskTitle">
+      <button type="button" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 ml-2" (click)="addTask()">Add Task</button>
+    </form>
+  
+    <div *ngIf="tasks.length === 0" class="text-center text-gray-500">No tasks found.</div>
+  
+    <ul class="border border-gray-300 rounded-lg divide-y divide-gray-300">
+      <li *ngFor="let task of tasks" class="flex items-center py-2 px-4">
+        <app-todo-item [task]="task" (taskUpdated)="updateTask($event)" (taskDeleted)="deleteTask($event)"></app-todo-item>
+      </li>
+    </ul>
   </div>
-
-  <ul>
-    <li *ngFor="let task of tasks" [class.completed]="task.completed">
-      <input
-        type="checkbox"
-        [(ngModel)]="task.completed"
-        (change)="updateTask(task)"
-      />
-      <span>{{ task.title }}</span>
-      <button (click)="deleteTask(task)">Delete</button>
-    </li>
-  </ul>
-</div>
+  

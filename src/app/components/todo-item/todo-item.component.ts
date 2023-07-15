@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from '../../models/task';
 
 @Component({
@@ -7,15 +7,15 @@ import { Task } from '../../models/task';
   styleUrls: ['./todo-item.component.css']
 })
 export class TodoItemComponent {
-  @Input() task: Task | undefined;
-  @Output() update: EventEmitter<Task> = new EventEmitter<Task>();
-  @Output() delete: EventEmitter<Task> = new EventEmitter<Task>();
+  @Input() task!: Task;
+  @Output() taskUpdated = new EventEmitter<Task>();
+  @Output() taskDeleted = new EventEmitter<Task>();
 
-  onStatusChange(): void {
-    this.update.emit(this.task);
+  updateTask(): void {
+    this.taskUpdated.emit(this.task);
   }
 
-  onDelete(): void {
-    this.delete.emit(this.task);
+  deleteTask(): void {
+    this.taskDeleted.emit(this.task);
   }
 }

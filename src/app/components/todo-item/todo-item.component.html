@@ -1,9 +1,5 @@
-<li *ngIf="task" [class.completed]="task.completed">
-  <input
-    type="checkbox"
-    [(ngModel)]="task.completed"
-    (change)="onStatusChange()"
-  />
-  <span>{{ task.title }}</span>
-  <button (click)="onDelete()">Delete</button>
-</li>
+<div class="flex items-center">
+    <input name="completed" type="checkbox" class="mr-2" [(ngModel)]="task.completed" (change)="updateTask()">
+    <input name="title" type="text" class="flex-grow p-2 border border-gray-300" [ngClass]="{'line-through': task.completed}" [(ngModel)]="task.title" (blur)="updateTask()">
+    <button type="button" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 ml-2" (click)="deleteTask()">Delete</button>
+  </div>
