@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../../services/todo/todo.service';
-import { Task } from '../../models/task'
+import { Task } from '../../models/task';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.css']
+  styleUrls: ['./todo-list.component.css'],
 })
 export class TodoListComponent implements OnInit {
   tasks: Task[] = [];
   newTaskTitle = '';
 
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {
     this.loadTasks();
@@ -26,7 +26,7 @@ export class TodoListComponent implements OnInit {
       const newTask: Task = {
         id: this.generateUniqueId(),
         title: this.newTaskTitle,
-        completed: false
+        completed: false,
       };
       this.todoService.addTask(newTask);
       this.loadTasks();

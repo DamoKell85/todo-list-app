@@ -11,7 +11,7 @@ describe('TodoListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [TodoListComponent],
-      providers: [TodoService]
+      providers: [TodoService],
     }).compileComponents();
   });
 
@@ -26,7 +26,7 @@ describe('TodoListComponent', () => {
   it('should load tasks from service on initialization', () => {
     const tasks: Task[] = [
       { id: '1', title: 'Task 1', completed: false },
-      { id: '2', title: 'Task 2', completed: true }
+      { id: '2', title: 'Task 2', completed: true },
     ];
     spyOn(todoService, 'getTasks').and.returnValue(tasks);
 
@@ -37,7 +37,11 @@ describe('TodoListComponent', () => {
 
   it('should add a new task', () => {
     const newTaskTitle = 'New Task';
-    const newTask: Task = { id: Date.now().toString(), title: newTaskTitle, completed: false };
+    const newTask: Task = {
+      id: Date.now().toString(),
+      title: newTaskTitle,
+      completed: false,
+    };
     spyOn(todoService, 'addTask');
 
     component.newTaskTitle = newTaskTitle;

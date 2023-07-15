@@ -9,7 +9,7 @@ describe('TodoItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TodoItemComponent]
+      declarations: [TodoItemComponent],
     }).compileComponents();
   });
 
@@ -20,7 +20,7 @@ describe('TodoItemComponent', () => {
     component.task = {
       id: '1',
       title: 'Task 1',
-      completed: false
+      completed: false,
     };
     component.taskUpdated.subscribe((task: Task) => (emittedTask = task));
     component.taskDeleted.subscribe((task: Task) => (emittedTask = task));
@@ -31,7 +31,7 @@ describe('TodoItemComponent', () => {
     const updatedTask: Task = {
       id: '1',
       title: 'Updated Task',
-      completed: true
+      completed: true,
     };
 
     component.task.title = updatedTask.title;

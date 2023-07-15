@@ -3,11 +3,10 @@ import { Task } from '../../models/task';
 import { sortBy } from 'lodash';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TodoService {
-
-  constructor() { }
+  constructor() {}
 
   private readonly storageKey = 'todo-list';
 
@@ -29,7 +28,7 @@ export class TodoService {
 
   updateTask(task: Task): void {
     const tasks = this.getTasks();
-    const index = tasks.findIndex(t => t.id === task.id);
+    const index = tasks.findIndex((t) => t.id === task.id);
     if (index !== -1) {
       tasks[index] = task;
       this.saveTasks(tasks);
@@ -38,7 +37,7 @@ export class TodoService {
 
   deleteTask(task: Task): void {
     const tasks = this.getTasks();
-    const index = tasks.findIndex(t => t.id === task.id);
+    const index = tasks.findIndex((t) => t.id === task.id);
     if (index !== -1) {
       tasks.splice(index, 1);
       this.saveTasks(tasks);

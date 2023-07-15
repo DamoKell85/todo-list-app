@@ -8,16 +8,9 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { TodoService } from './services/todo/todo.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TodoListComponent,
-    TodoItemComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule
-  ],
+  declarations: [AppComponent, TodoListComponent, TodoItemComponent],
+  imports: [BrowserModule, FormsModule],
   providers: [TodoService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

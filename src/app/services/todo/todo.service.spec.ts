@@ -9,10 +9,7 @@ describe('TodoService', () => {
   beforeEach(() => {
     storage = {};
     TestBed.configureTestingModule({
-      providers: [
-        TodoService,
-        { provide: Storage, useValue: storage }
-      ]
+      providers: [TodoService, { provide: Storage, useValue: storage }],
     });
     service = TestBed.inject(TodoService);
     localStorage.removeItem('todo-list');
@@ -25,7 +22,7 @@ describe('TodoService', () => {
   it('should retrieve tasks from local storage', () => {
     const tasks: Task[] = [
       { id: '1', title: 'Task 1', completed: false },
-      { id: '2', title: 'Task 2', completed: true }
+      { id: '2', title: 'Task 2', completed: true },
     ];
     localStorage.setItem('todo-list', JSON.stringify(tasks));
 
@@ -37,7 +34,7 @@ describe('TodoService', () => {
   it('should save tasks to local storage', () => {
     const tasks: Task[] = [
       { id: '1', title: 'Task 1', completed: false },
-      { id: '2', title: 'Task 2', completed: true }
+      { id: '2', title: 'Task 2', completed: true },
     ];
 
     service.saveTasks(tasks);
@@ -59,22 +56,28 @@ describe('TodoService', () => {
   it('should update a task', () => {
     const tasks: Task[] = [
       { id: '1', title: 'Task 1', completed: false },
-      { id: '2', title: 'Task 2', completed: true }
+      { id: '2', title: 'Task 2', completed: true },
     ];
     localStorage.setItem('todo-list', JSON.stringify(tasks));
-    const updatedTask: Task = { id: '2', title: 'Task 2 Updated', completed: false };
+    const updatedTask: Task = {
+      id: '2',
+      title: 'Task 2 Updated',
+      completed: false,
+    };
 
     service.updateTask(updatedTask);
 
-    const storedTasks: Task[] = JSON.parse(localStorage.getItem('todo-list') as string);
-    const task = storedTasks.find(t => t.id === updatedTask.id);
+    const storedTasks: Task[] = JSON.parse(
+      localStorage.getItem('todo-list') as string,
+    );
+    const task = storedTasks.find((t) => t.id === updatedTask.id);
     expect(task).toEqual(updatedTask);
   });
 
   it('should delete a task', () => {
     const tasks: Task[] = [
       { id: '1', title: 'Task 1', completed: false },
-      { id: '2', title: 'Task 2', completed: true }
+      { id: '2', title: 'Task 2', completed: true },
     ];
     localStorage.setItem('todo-list', JSON.stringify(tasks));
     const taskToDelete: Task = { id: '2', title: 'Task 2', completed: true };
