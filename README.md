@@ -36,6 +36,7 @@ Run the following command to start the development server:
 ng serve
 ```
 
+
 After the server starts, you can access the application by opening your browser and navigating to `http://localhost:4200`.
 
 ### Usage
@@ -67,6 +68,7 @@ After the server starts, you can access the application by opening your browser 
 - Angular Services
 - Local Storage
 - Tailwind CSS
+- Prettier (Code Formatter)
 
 ## Contributing
 
@@ -80,6 +82,14 @@ This project is licensed under the [MIT License](LICENSE).
 
 - This project was created as a coding challenge for a job application.
 - The Angular framework and its documentation were instrumental in building this application.
+- Prettier was used for code formatting to enforce consistent code styling and readability. Be sure to format your code using Prettier before submitting pull requests.
 
+---
 
+## Code Formatting
 
+To ensure consistent code styling and formatting, this project uses Prettier. Before submitting pull requests, please make sure to format your code using Prettier. You can run the following command to format the code:
+
+```
+npm run format
+```
