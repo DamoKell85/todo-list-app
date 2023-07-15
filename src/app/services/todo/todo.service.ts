@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../../models/task';
+import { sortBy } from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class TodoService {
 
   getTasks(): Task[] {
     const tasksJson = localStorage.getItem(this.storageKey);
-    return tasksJson ? JSON.parse(tasksJson) : [];
+    return tasksJson ? sortBy(JSON.parse(tasksJson), 'id') : [];
   }
 
   saveTasks(tasks: Task[]): void {
