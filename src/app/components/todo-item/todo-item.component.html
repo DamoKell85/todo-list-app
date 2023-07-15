@@ -1,1 +1,9 @@
-<p>todo-item works!</p>
+<li [class.completed]="task?.completed">
+  <input
+    type="checkbox"
+    [(ngModel)]="task.completed"
+    (change)="onStatusChange()"
+  />
+  <span>{{ task?.title }}</span>
+  <button (click)="onDelete()">Delete</button>
+</li>
